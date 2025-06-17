@@ -1,4 +1,8 @@
-# Alicia Recorder API 框架
+# SparkMind
+
+![IMG_7973](./img/IMG_7973.jpeg)
+
+## Alicia Recorder API 框架
 
 `alicia_recorder` 是一个用于控制和同步 Alicia 机械臂和多个摄像头的 Python API 框架。它被设计为通过多进程架构高效地采集数据，适用于机器人研究和数据收集任务。
 
@@ -150,10 +154,10 @@ if __name__ == "__main__":
 *   **示例**:
     ```python
     from alicia_recorder.api import initialize
-
+    
     config_file = "config/api_test_config.json"
     success, loaded_config = initialize(config_file, mode="record")
-
+    
     if success:
         print("API 初始化成功!")
         print(f"加载的配置: {loaded_config}")
@@ -174,7 +178,7 @@ if __name__ == "__main__":
 *   **示例**:
     ```python
     from alicia_recorder.api import initialize, create_dataset_directories
-
+    
     success, config = initialize("config/api_test_config.json")
     if success:
         # 假设 config 中定义了 dataset: {"name": "my_robot_data"}
@@ -230,10 +234,10 @@ if __name__ == "__main__":
     ```python
     from alicia_recorder.api import capture_data
     import cv2
-
+    
     # (假设 API 已经初始化)
     data_packet = capture_data(timeout=0.5)
-
+    
     if data_packet:
         print(f"捕获到数据，主时间戳: {data_packet['timestamp']}")
         if 'arm_data' in data_packet and data_packet['arm_data']:
@@ -257,7 +261,7 @@ if __name__ == "__main__":
 *   **示例**:
     ```python
     from alicia_recorder.api import create_dataset_directories, save_data, initialize
-
+    
     success, config = initialize("config/api_test_config.json", mode="record")
     if success:
         dataset_path = create_dataset_directories(config)
@@ -276,7 +280,7 @@ if __name__ == "__main__":
 *   **示例**:
     ```python
     from alicia_recorder.api import stop_save_data
-
+    
     # (假设数据正在保存中)
     stop_save_data()
     print("数据保存已停止。")
@@ -290,10 +294,10 @@ if __name__ == "__main__":
 *   **示例**:
     ```python
     from alicia_recorder.api import initialize, cleanup
-
+    
     initialize("config/api_test_config.json")
     # ... 执行数据采集和其他操作 ...
-
+    
     print("正在清理资源...")
     cleanup()
     print("清理完成。")
