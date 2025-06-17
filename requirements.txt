@@ -1,0 +1,5 @@
+numpy>=1.19.3
+opencv-python>=4.5.0
+h5py>=3.1.0
+matplotlib>=3.3.0
+pyserial>=3.5
